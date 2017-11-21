@@ -1,3 +1,12 @@
+.App {
+  /*text-align: center;*/
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #3985ca;
+  text-align: left;
+}
 .input-field {
   width: 100%;
   padding-left: 10px;
@@ -6,7 +15,18 @@
   border-radius: 3px;
   border: 1px solid #a4cef9;
 }
-
+.Login-Wrapper{
+  border: 1px solid grey;
+  max-width: 300px;
+  min-width: 300px;
+  padding: 15px;
+  margin: 0 auto;
+  background-color: #fff;
+  box-shadow: 0 0 0.3em #555;
+}
+.Username-Wrapper{
+  padding: 5px;
+}
 .label {
   color: #3985ca;
 }
@@ -26,4 +46,10 @@ h3 {
   border: 1px solid #3985ca;
   color: #fff;
   border-radius: 3px;
+}
+
+.success-msg {
+  color: green;
+  display: block;
+  text-align: center;
 }
