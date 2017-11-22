@@ -53,3 +53,6 @@ h3 {
   display: block;
   text-align: center;
 }
+.invalid-msg{
+  color: #bf2a2a;
+}

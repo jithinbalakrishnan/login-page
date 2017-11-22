@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
     constructor() {
         super();
         this.state = {
-            showSuccessMessage: false
-        }
+            showSuccessMessage: false,
+            showInValidMessage: false,
+            email: ''
+        };
+
+        //this.validateEmail = this.validateEmail.bind(this);
     }
 
     login() {
@@ -22,6 +26,30 @@ class App extends Component {
         })
     }
 
+    validateEmail = (event) => {
+        //const email=document.getElementById("TextEmail").value;
+        this.setState({
+            email: event.target.value
+        });
+
+
+        let email = this.state.email;
+        const reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+
+        if (!reg.test(email))
+        {
+            this.setState({
+                showInValidMessage: true
+            })
+        } else {
+            this.setState({
+                showInValidMessage: false
+            })
+        }
+
+        event.preventDefault();
+    };
+
     render() {
         return (
             <div className="App">
@@ -33,7 +61,11 @@ class App extends Component {
                     <hr/>
                     <div className="Form-Group">
                         <label className="label">Username</label>
-                        <input type="text" placeholder="Enter Username" className="input-field" required/>
+                        <input type="text" placeholder="Enter Username" className="input-field" value={this.state.email} onChange={this.validateEmail} required/>
+                        {this.state.showInValidMessage &&
+                        <span className="invalid-msg"><i
+                            className="fa fa-times"></i> Invalid Email<br/></span>
+                        }
                         <label className="label">Password</label>
                         <input type="password" placeholder="Enter Password" className="input-field" required/>
                         {this.state.showSuccessMessage &&
